@@ -1,22 +1,15 @@
 class GamesController < ApplicationController
   # before_action :set_game, only: [:show, :edit, :update, :destroy]
 
-
-  # GET /games
   def index
     games = Game.all
     render json: games.to_json
   end
 
-  # GET /games/:id
   def show
-    game = Game.find(params[:id])
-    render json: game
+    render json: @game
   end
 
-
-  # POST /games
-  # POST /games.json
   def create
     @game = Game.new(game_params)
 
@@ -31,8 +24,6 @@ class GamesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /games/1
-  # PATCH/PUT /games/1.json
   def update
     respond_to do |format|
       if @game.update(game_params)
